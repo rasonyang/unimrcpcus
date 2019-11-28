@@ -41,11 +41,14 @@ static apt_bool_t demo_framework_cmdline_process(demo_framework_t *framework, ch
 	apt_bool_t running = TRUE;
 	char *name;
 	char *last;
+
+	printf("cmdline %s\n",cmdline);
+
 	name = apr_strtok(cmdline, " ", &last);
 	if(!name)
 		return running;
 
-	printf("cmdline %s\n",cmdline);
+
 
 	if(strcasecmp(name,"run") == 0) {
 		char *app_name = apr_strtok(NULL, " ", &last);
@@ -89,7 +92,7 @@ static apt_bool_t demo_framework_cmdline_run(demo_framework_t *framework)
 {
 	apt_bool_t running = TRUE;
 	char cmdline[1024] = {0};
-	sprintf(cmdline,"run %s\n",g_run);
+	sprintf(cmdline,"run %s",g_run);
 	running = demo_framework_cmdline_process(framework,cmdline);
 		
 	return TRUE;
