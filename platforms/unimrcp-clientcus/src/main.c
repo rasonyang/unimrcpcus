@@ -22,7 +22,10 @@
 #include "apt_log.h"
 #include "uni_revision.h"
 
+const char *g_wavfile;
+
 typedef struct {
+	const char   *wavfile;
 	const char   *root_dir_path;
 	const char   *dir_layout_conf;
 	const char   *log_priority;
@@ -113,6 +116,8 @@ static void usage(void)
 		"\n"
 		"  Available options:\n"
 		"\n"
+		"   -w [--wavfile] path     : Set the path to the output wavfile.\n"
+		"\n"
 		"   -r [--root-dir] path     : Set the path to the project root directory.\n"
 		"\n"
 		"   -c [--dir-layout] path   : Set the path to the dir layout config file.\n"
@@ -139,6 +144,7 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	const apr_getopt_option_t opt_option[] = {
 		/* long-option, short-option, has-arg flag, description */
+		{ "wavfile",    'w', TRUE,  "path to wavfile" },         /* -w arg or --wavfile arg */
 		{ "root-dir",    'r', TRUE,  "path to root dir" },         /* -r arg or --root-dir arg */
 		{ "dir-layout",  'c', TRUE,  "path to dir layout conf" },  /* -c arg or --dir-layout arg */
 		{ "log-prio",    'l', TRUE,  "log priority" },             /* -l arg or --log-prio arg */
@@ -161,6 +167,10 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	while((rv = apr_getopt_long(opt, opt_option, &optch, &optarg)) == APR_SUCCESS) {
 		switch(optch) {
+			case 'w':
+				options->wavfile = optarg;
+				g_wavfile = optarg
+				break;
 			case 'r':
 				options->root_dir_path = optarg;
 				break;

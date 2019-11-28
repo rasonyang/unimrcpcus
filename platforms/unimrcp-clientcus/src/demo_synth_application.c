@@ -36,6 +36,7 @@
 #include "mrcp_synth_header.h"
 #include "mrcp_synth_resource.h"
 #include "apt_log.h"
+#include "main.h"
 
 typedef struct synth_app_channel_t synth_app_channel_t;
 
@@ -218,9 +219,8 @@ static apt_bool_t synth_application_on_channel_add(mrcp_application_t *applicati
 
 		if(synth_channel) {
 			const apt_str_t *id = mrcp_application_session_id_get(session);
-			char *file_name = apr_psprintf(pool,"synth-%dkHz-%s.pcm",
-									descriptor->sampling_rate/1000,
-									id->buf);
+			char *file_name = apr_psprintf(pool,"%s.pcm",
+									g_wavfile);
 			char *file_path = apt_vardir_filepath_get(dir_layout,file_name,pool);
 			if(file_path) {
 				apt_log(APT_LOG_MARK,APT_PRIO_INFO,"Open Speech Output File [%s] for Writing",file_path);
