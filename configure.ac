@@ -135,6 +135,7 @@ AC_ARG_ENABLE(client-app,
     [enable_client_app="yes"])
 
 AM_CONDITIONAL([UNIMRCP_CLIENT_APP],[test "${enable_client_lib}" = "yes" && test "${enable_client_app}" = "yes"])
+AM_CONDITIONAL([UNIMRCP_CLIENT_APPCUS],[test "${enable_client_lib}" = "yes" && test "${enable_client_app}" = "yes"])
 
 dnl Sample UniMRCP client application in C++.
 AC_ARG_ENABLE(umc,

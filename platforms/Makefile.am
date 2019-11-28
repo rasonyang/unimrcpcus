@@ -10,6 +10,10 @@ if UNIMRCP_CLIENT_APP
 SUBDIRS               += unimrcp-client
 endif
 
+if UNIMRCP_CLIENT_APPCUS
+SUBDIRS               += unimrcp-clientcus
+endif
+
 if UMC
 SUBDIRS               += umc
 endif

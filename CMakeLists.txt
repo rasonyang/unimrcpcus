@@ -96,6 +96,7 @@ add_subdirectory (platforms/libunimrcp-server)
 # Sub-projects: platform applications
 add_subdirectory (platforms/umc)
 add_subdirectory (platforms/unimrcp-client)
+add_subdirectory (platforms/unimrcp-clientcus)
 add_subdirectory (platforms/unimrcp-server)
 
 # Sub-projects: asr-client
