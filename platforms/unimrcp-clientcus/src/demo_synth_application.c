@@ -253,6 +253,8 @@ static apt_bool_t synth_application_on_channel_remove(mrcp_application_t *applic
 			synth_channel->audio_out = NULL;
 			fclose(audio_out);
 		}
+		printf("pcm over!\n");
+		exit(-3);
 	}
 	return TRUE;
 }
