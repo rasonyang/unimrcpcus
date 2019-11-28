@@ -14,7 +14,7 @@ gmake
 gmake install
 
 
-cp platforms/unimrcp-clientcus/unimrcpclientcus  $UniMRCP_HOME/bin
+cp platforms/unimrcp-clientcus/unimrcpclientcus.sh  $UniMRCP_HOME/bin
 
 cd $CUR_DIR
 
