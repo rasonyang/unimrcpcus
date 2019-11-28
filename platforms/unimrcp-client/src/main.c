@@ -38,6 +38,8 @@ static apt_bool_t demo_framework_cmdline_process(demo_framework_t *framework, ch
 	if(!name)
 		return running;
 
+	printf("cmdline %s\n",cmdline);
+
 	if(strcasecmp(name,"run") == 0) {
 		char *app_name = apr_strtok(NULL, " ", &last);
 		if(app_name) {
@@ -269,6 +271,8 @@ int main(int argc, const char * const *argv)
 	if(framework) {
 		/* run command line  */
 		demo_framework_cmdline_run(framework);
+
+		sleep(5);
 		/* destroy demo framework */
 		demo_framework_destroy(framework);
 	}
