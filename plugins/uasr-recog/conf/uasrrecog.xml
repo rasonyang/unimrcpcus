@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTTSSynth>
+	<LogLevel>info</LogLevel>			<!-- none, error, warning, info, debug -->
+	<LogDir>log</LogDir>				<!-- default: $${BaseDir}/log -->
+	<RecordSwitch>off</RecordSwitch>	<!-- on/off -->
+	<RecordDir>log</RecordDir>			<!-- default: $${BaseDir}/recordings -->
+
+	<SampleRate>8000</SampleRate>		<!-- 8000, 16000 -->
+	<VadEos>500</VadEos>				<!-- between 200 and 1000 -->
+	<ResultFormat>&lt;?xml version=&quot;1.0&quot;?>&lt;result>&lt;interpretation confidence=&quot;1.0&quot;>&lt;instance>${result}&lt;/instance>&lt;input mode=&quot;speech&quot;>${result}&lt;/input>&lt;/interpretation>&lt;/result></ResultFormat>
+		<!-- *${result}*, and all ${result} will be replaced by -->
+	<EnableDigitise>0</EnableDigitise>
+
+	<Vendor></Vendor>					<!-- nls -->
+	<AuthInfo></AuthInfo>
+		<!-- nls: access_key_id=xxx,access_key_secret=xxx -->
+	<ExtInfo></ExtInfo>
+		<!-- nls: app_key=xxx -->
+</UTTSSynth>
+

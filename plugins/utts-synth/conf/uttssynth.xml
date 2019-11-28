@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTTSSynth>
+	<LogLevel>info</LogLevel>			<!-- none, error, warning, info, debug -->
+	<LogDir>log</LogDir>				<!-- default: $${BaseDir}/log -->
+	<RecordSwitch>off</RecordSwitch>	<!-- on/off -->
+	<RecordDir>log</RecordDir>			<!-- default: $${BaseDir}/recordings -->
+
+	<Voice></Voice>
+		<!-- nls: xiaoyun -->
+	<SampleRate>8000</SampleRate>		<!-- 8000, 16000 -->
+	<Volume>100</Volume>				<!-- 0~100 -->
+	<Speed>50</Speed>					<!-- 0~100 -->
+	<Tone>50</Tone>						<!-- 0~100 -->
+
+	<Vendor></Vendor>					<!-- nls -->
+	<AuthInfo></AuthInfo>
+		<!-- nls: access_key_id=xxx,access_key_secret=xxx -->
+	<ExtInfo></ExtInfo>
+		<!-- nls: app_key=xxx -->
+</UTTSSynth>
+
