@@ -238,6 +238,7 @@ AC_CONFIG_FILES([
     platforms/libunimrcp-client/Makefile
     platforms/unimrcp-server/Makefile
     platforms/unimrcp-client/Makefile
+    platforms/unimrcp-clientcus/Makefile
     platforms/libasr-client/Makefile
     platforms/asr-client/Makefile
     platforms/umc/Makefile
