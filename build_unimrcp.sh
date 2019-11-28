@@ -13,5 +13,8 @@ rm -fr $UniMRCP_HOME
 gmake
 gmake install
 
+
+cp platforms/unimrcp-clientcus/unimrcpclientcus  $UniMRCP_HOME/bin
+
 cd $CUR_DIR
 
