@@ -83,22 +83,9 @@ static apt_bool_t demo_framework_cmdline_run(demo_framework_t *framework)
 {
 	apt_bool_t running = TRUE;
 	char cmdline[1024];
-	apr_size_t i;
-	do {
-		printf(">");
-		memset(&cmdline, 0, sizeof(cmdline));
-		for(i = 0; i < sizeof(cmdline); i++) {
-			cmdline[i] = (char) getchar();
-			if(cmdline[i] == '\n') {
-				cmdline[i] = '\0';
-				break;
-			}
-		}
-		if(*cmdline) {
-			running = demo_framework_cmdline_process(framework,cmdline);
-		}
-	}
-	while(running != 0);
+	sprintf(cmdline,"run %s",g_run)
+	running = demo_framework_cmdline_process(framework,cmdline);
+		
 	return TRUE;
 }
 
@@ -115,6 +102,10 @@ static void usage(void)
 		"  unimrcpclient [options]\n"
 		"\n"
 		"  Available options:\n"
+		"\n"
+		"   -a [--run] path     : Set the demo choice synth\n"
+		"\n"
+		"   -w [--textfile] path     : Set the path to the output textfile.\n"
 		"\n"
 		"   -w [--wavfile] path     : Set the path to the output wavfile.\n"
 		"\n"
@@ -144,6 +135,8 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	const apr_getopt_option_t opt_option[] = {
 		/* long-option, short-option, has-arg flag, description */
+		{ "run",    'a', TRUE,  "demo choice synth" },         /* -a arg or --run arg */
+		{ "textfile",    't', TRUE,  "path to textfile" },         /* -t arg or --textfile arg */
 		{ "wavfile",    'w', TRUE,  "path to wavfile" },         /* -w arg or --wavfile arg */
 		{ "root-dir",    'r', TRUE,  "path to root dir" },         /* -r arg or --root-dir arg */
 		{ "dir-layout",  'c', TRUE,  "path to dir layout conf" },  /* -c arg or --dir-layout arg */
@@ -167,6 +160,14 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	while((rv = apr_getopt_long(opt, opt_option, &optch, &optarg)) == APR_SUCCESS) {
 		switch(optch) {
+			case 'a':
+				options->run = optarg;
+				g_run = optarg;
+				break;
+			case 't':
+				options->textfile = optarg;
+				g_textfile = optarg;
+				break;
 			case 'w':
 				options->wavfile = optarg;
 				g_wavfile = optarg;
