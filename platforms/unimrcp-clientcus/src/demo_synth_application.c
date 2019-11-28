@@ -222,7 +222,7 @@ static apt_bool_t synth_application_on_channel_add(mrcp_application_t *applicati
 			//char *file_name = apr_psprintf(pool,"%s.pcm",
 			//						g_wavfile);
 			//char *file_path = apt_vardir_filepath_get(dir_layout,file_name,pool);
-			file_path = g_wavfile;
+			char* file_path = g_wavfile;
 			if(file_path) {
 				apt_log(APT_LOG_MARK,APT_PRIO_INFO,"Open Speech Output File [%s] for Writing",file_path);
 				synth_channel->audio_out = fopen(file_path,"wb");
