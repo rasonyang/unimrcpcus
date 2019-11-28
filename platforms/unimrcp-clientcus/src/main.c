@@ -87,7 +87,7 @@ static apt_bool_t demo_framework_cmdline_run(demo_framework_t *framework)
 {
 	apt_bool_t running = TRUE;
 	char cmdline[1024];
-	sprintf(cmdline,"run %s",g_run)
+	sprintf(cmdline,"run %s",g_run);
 	running = demo_framework_cmdline_process(framework,cmdline);
 		
 	return TRUE;
