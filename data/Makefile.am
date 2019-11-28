@@ -4,9 +4,9 @@ DATAFILES            =
 
 if COMMON_CLIENT_DATA
 DATAFILES           += grammar.jsgf grammar.mixed grammar.srgs grammar.xml \
-                       speak.txt speak.xml \
+                       speak.txt speak.xml speaktmp.xml \
                        one-16kHz.pcm one-8kHz.pcm \
-                       johnsmith-16kHz.pcm johnsmith-8kHz.pcm
+                       johnsmith-16kHz.pcm johnsmith-8kHz.pcm 
 endif
 
 if DEMOSYNTH_PLUGIN
