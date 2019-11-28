@@ -169,7 +169,7 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 		switch(optch) {
 			case 'w':
 				options->wavfile = optarg;
-				g_wavfile = optarg
+				g_wavfile = optarg;
 				break;
 			case 'r':
 				options->root_dir_path = optarg;
