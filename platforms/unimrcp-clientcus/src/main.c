@@ -141,7 +141,7 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	const apr_getopt_option_t opt_option[] = {
 		/* long-option, short-option, has-arg flag, description */
-		{ "run",    'a', TRUE,  "demo choice synth" },         /* -a arg or --run arg */
+		{ "run",    'u', TRUE,  "demo choice synth" },         /* -a arg or --run arg */
 		{ "textfile",    't', TRUE,  "path to textfile" },         /* -t arg or --textfile arg */
 		{ "wavfile",    'w', TRUE,  "path to wavfile" },         /* -w arg or --wavfile arg */
 		{ "root-dir",    'r', TRUE,  "path to root dir" },         /* -r arg or --root-dir arg */
@@ -166,7 +166,7 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 
 	while((rv = apr_getopt_long(opt, opt_option, &optch, &optarg)) == APR_SUCCESS) {
 		switch(optch) {
-			case 'a':
+			case 'u':
 				options->run = optarg;
 				g_run = optarg;
 				break;
