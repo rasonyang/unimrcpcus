@@ -30,35 +30,20 @@
 
 static void demo_message_body_set(mrcp_message_t *mrcp_message, const apt_dir_layout_t *dir_layout, const char *file_name)
 {
-	// char *file_path = apt_datadir_filepath_get(dir_layout,file_name,mrcp_message->pool);
-	// if(file_path) {
-	// 	FILE *file = fopen(file_path,"r");
-	// 	if(file) {
-	// 		char text[1024];
-	// 		apr_size_t size;
-	// 		size = fread(text,1,sizeof(text),file);
-	// 		apt_string_assign_n(&mrcp_message->body,text,size,mrcp_message->pool);
-	// 		fclose(file);
-	// 	}
-	// }
-	textformat = "<?xml version=\"1.0\"?>\n
-	<speak version=\"1.0\" xml:lang=\"en-US\" xmlns=\"http://www.w3.org/2001/10/synthesis\">\n
-  			<p>\n
-    			<s>%s</s>\n
-  			</p>\n
-	</speak>\n
-	"
-
-	char textcontent[400];
-
-	sprintf(textcontent,textformat,g_text);
-
-	if(g_text != NULL)
-	{
-		apr_size_t size = sizeof(textcontent);
-		apt_string_assign_n(&mrcp_message->body,textcontent,size,mrcp_message->pool);
-	}
-	
+	char *file_path = apt_datadir_filepath_get(dir_layout,"speaktmp.xml",mrcp_message->pool);
+	if(file_path) {
+		FILE *file = fopen(file_path,"r");
+		if(file) {
+			char textcontent[400];
+			char text[1024];
+			apr_size_t size;
+			fread(text,1,sizeof(text),file);
+			sprintf(textcontent,text,g_text);
+			size = sizeof(textcontent);
+			apt_string_assign_n(&mrcp_message->body,textcontent,size,mrcp_message->pool);
+			fclose(file);
+		}
+	}	
 
 }
 
