@@ -22,9 +22,13 @@
 #include "apt_log.h"
 #include "uni_revision.h"
 
+const char *g_run;
+const char *g_textfile;
 const char *g_wavfile;
 
 typedef struct {
+	const char   *run;
+	const char   *textfile;
 	const char   *wavfile;
 	const char   *root_dir_path;
 	const char   *dir_layout_conf;
@@ -105,7 +109,7 @@ static void usage(void)
 		"\n"
 		"   -a [--run] path     : Set the demo choice synth\n"
 		"\n"
-		"   -w [--textfile] path     : Set the path to the output textfile.\n"
+		"   -t [--textfile] path     : Set the path to the output textfile.\n"
 		"\n"
 		"   -w [--wavfile] path     : Set the path to the output wavfile.\n"
 		"\n"
