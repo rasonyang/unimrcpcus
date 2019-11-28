@@ -23,14 +23,13 @@
 #include "uni_revision.h"
 
 const char *g_run;
-const char *g_textfile;
-char g_pcmfile[200]={0};
-const char *g_wavfile;
+const char *g_text;
+const char *g_pcmfile;
 
 typedef struct {
 	const char   *run;
-	const char   *textfile;
-	const char   *wavfile;
+	const char   *text;
+	const char   *pcmfile;
 	const char   *root_dir_path;
 	const char   *dir_layout_conf;
 	const char   *log_priority;
@@ -115,9 +114,9 @@ static void usage(void)
 		"\n"
 		"   -a [--run] path     : Set the demo choice synth\n"
 		"\n"
-		"   -t [--textfile] path     : Set the path to the output textfile.\n"
+		"   -t [--text] path     : Set the path to the output text.\n"
 		"\n"
-		"   -w [--wavfile] path     : Set the path to the output wavfile.\n"
+		"   -p [--pcmfile] path     : Set the path to the output pcmfile.\n"
 		"\n"
 		"   -r [--root-dir] path     : Set the path to the project root directory.\n"
 		"\n"
@@ -146,8 +145,8 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 	const apr_getopt_option_t opt_option[] = {
 		/* long-option, short-option, has-arg flag, description */
 		{ "run",    'u', TRUE,  "demo choice synth" },         /* -a arg or --run arg */
-		{ "textfile",    't', TRUE,  "path to textfile" },         /* -t arg or --textfile arg */
-		{ "wavfile",    'w', TRUE,  "path to wavfile" },         /* -w arg or --wavfile arg */
+		{ "text",    't', TRUE,  "text content" },         /* -t arg or --text arg */
+		{ "pcmfile",    'p', TRUE,  "path to pcmfile" },         /* -w arg or --wavfile arg */
 		{ "root-dir",    'r', TRUE,  "path to root dir" },         /* -r arg or --root-dir arg */
 		{ "dir-layout",  'c', TRUE,  "path to dir layout conf" },  /* -c arg or --dir-layout arg */
 		{ "log-prio",    'l', TRUE,  "log priority" },             /* -l arg or --log-prio arg */
@@ -175,14 +174,12 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 				g_run = optarg;
 				break;
 			case 't':
-				options->textfile = optarg;
-				g_textfile = optarg;
+				options->text = optarg;
+				g_text = optarg;
 				break;
-			case 'w':
-				options->wavfile = optarg;
-				g_wavfile = optarg;
-				strcat(g_pcmfile,optarg);
-				strcat(g_pcmfile,"pcm");
+			case 'p':
+				options->pcmfile = optarg;
+				g_pcmfile = optarg;
 				break;
 			case 'r':
 				options->root_dir_path = optarg;
