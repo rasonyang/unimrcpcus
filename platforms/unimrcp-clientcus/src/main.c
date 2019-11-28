@@ -24,7 +24,7 @@
 
 const char *g_run;
 const char *g_textfile;
-const char *g_pcmfile;
+char g_pcmfile[200]={0};
 const char *g_wavfile;
 
 typedef struct {
@@ -181,7 +181,7 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 			case 'w':
 				options->wavfile = optarg;
 				g_wavfile = optarg;
-				g_pcmfile = g_wavfile;
+				strcat(g_pcmfile,optarg);
 				strcat(g_pcmfile,"pcm");
 				break;
 			case 'r':

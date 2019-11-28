@@ -330,7 +330,7 @@ static apt_bool_t synth_application_on_channel_add(mrcp_application_t *applicati
 			char* file_path = g_pcmfile;
 			if(file_path) {
 				apt_log(APT_LOG_MARK,APT_PRIO_INFO,"Open Speech Output File [%s] for Writing",file_path);
-				synth_channel->audio_out = fopen(strcat(file_path,"pcm"),"wb");
+				synth_channel->audio_out = fopen(file_path,"wb");
 				if(!synth_channel->audio_out) {
 					apt_log(APT_LOG_MARK,APT_PRIO_WARNING,"Failed to Open Utterance Output File [%s] for Writing",file_path);
 				}
@@ -358,7 +358,6 @@ static apt_bool_t synth_application_on_channel_remove(mrcp_application_t *applic
 			synth_channel->audio_out = NULL;
 			fclose(audio_out);
 		}
-		
 		simplest_pcm16le_to_wave(g_pcmfile,1,8000,g_wavfile);
 		printf("pcm over!\n");
 		exit(-3);
