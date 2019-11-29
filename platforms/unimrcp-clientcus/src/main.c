@@ -290,7 +290,7 @@ int main(int argc, const char * const *argv)
 		/* run command line  */
 		demo_framework_cmdline_run(framework);
 
-		sleep(5);
+		sleep(30);
 		/* destroy demo framework */
 		demo_framework_destroy(framework);
 	}
