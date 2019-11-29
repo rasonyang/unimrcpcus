@@ -20,6 +20,7 @@
 #include "unimrcp_client.h"
 #include "apt_consumer_task.h"
 #include "apt_log.h"
+#include "main.h"
 
 #define FRAMEWORK_TASK_NAME "Framework Agent"
 
