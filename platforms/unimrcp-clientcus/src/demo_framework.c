@@ -59,7 +59,7 @@ static apt_bool_t demo_framework_app_register(demo_framework_t *framework, demo_
 demo_framework_t* demo_framework_create(apt_dir_layout_t *dir_layout)
 {
 	demo_framework_t *framework = NULL;
-	mrcp_client_t *client = unimrcp_client_create(dir_layout);
+	mrcp_client_t *client = unimrcp_client_create_profile(dir_layout,g_profile);
 	if(client) {
 		demo_application_t *demo_application;
 		apr_pool_t *pool = mrcp_client_memory_pool_get(client);

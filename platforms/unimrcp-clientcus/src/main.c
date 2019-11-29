@@ -23,6 +23,8 @@
 #include "uni_revision.h"
 
 const char *g_run;
+const char *g_profile;
+const char *g_voice;
 const char *g_text;
 const char *g_pcmfile;
 
@@ -114,6 +116,10 @@ static void usage(void)
 		"\n"
 		"   -a [--run] path     : Set the demo choice synth\n"
 		"\n"
+		"   -f [--profile] path     : Set the path to the profile .\n"
+		"\n"
+		"   -t [--voice] path     : Set the voice.\n"
+		"\n"
 		"   -t [--text] path     : Set the path to the output text.\n"
 		"\n"
 		"   -p [--pcmfile] path     : Set the path to the output pcmfile.\n"
@@ -145,6 +151,8 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 	const apr_getopt_option_t opt_option[] = {
 		/* long-option, short-option, has-arg flag, description */
 		{ "run",    'u', TRUE,  "demo choice synth" },         /* -a arg or --run arg */
+		{ "profile",    'f', TRUE,  "text content" },         /* -f arg or --profile arg */
+		{ "voice",    'i', TRUE,  "voice name" },         /* -i arg or --voice arg */
 		{ "text",    't', TRUE,  "text content" },         /* -t arg or --text arg */
 		{ "pcmfile",    'p', TRUE,  "path to pcmfile" },         /* -w arg or --wavfile arg */
 		{ "root-dir",    'r', TRUE,  "path to root dir" },         /* -r arg or --root-dir arg */
@@ -172,6 +180,12 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 			case 'u':
 				options->run = optarg;
 				g_run = optarg;
+				break;
+			case 'f':
+				g_profile = optarg;
+				break;
+			case 'i':
+				g_voice = optarg;
 				break;
 			case 't':
 				options->text = optarg;

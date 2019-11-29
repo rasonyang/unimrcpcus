@@ -17,7 +17,7 @@ if [ $1 != "synth" ];then
         exit
 fi
 
-if [ ! -f $2 ];then
+if [ ! -r $2 ];then
         echo "[err] file $2 not exsits "
         exit
 fi

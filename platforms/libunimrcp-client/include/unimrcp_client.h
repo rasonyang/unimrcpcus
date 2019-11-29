@@ -31,6 +31,7 @@ APT_BEGIN_EXTERN_C
  * @param dir_layout the dir layout structure
  */
 MRCP_DECLARE(mrcp_client_t*) unimrcp_client_create(apt_dir_layout_t *dir_layout);
+MRCP_DECLARE(mrcp_client_t*) unimrcp_client_create_profile(apt_dir_layout_t *dir_layout, char *profile);
 
 /**
  * Create UniMRCP client.

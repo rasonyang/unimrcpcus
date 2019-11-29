@@ -132,6 +132,27 @@ MRCP_DECLARE(mrcp_client_t*) unimrcp_client_create(apt_dir_layout_t *dir_layout)
 	return loader->client;
 }
 
+MRCP_DECLARE(mrcp_client_t*) unimrcp_client_create_profile(apt_dir_layout_t *dir_layout, char *profile){
+	const char *dir_path;
+	unimrcp_client_loader_t *loader;
+
+	if(!dir_layout) {
+		return NULL;
+	}
+
+	loader = unimrcp_client_init(dir_layout);
+	if (!loader)
+		return NULL;
+
+	dir_path = apt_dir_layout_path_get(dir_layout,APT_LAYOUT_CONF_DIR);
+
+	if(unimrcp_client_load(loader,dir_path,profile) == FALSE) {
+		apt_log(APT_LOG_MARK,APT_PRIO_WARNING,"Failed to Load UniMRCP Client Document");
+	}
+
+	return loader->client;
+}
+
 /** Create UniMRCP client from XML string configuration */
 MRCP_DECLARE(mrcp_client_t*) unimrcp_client_create2(const char *xmlconfig)
 {
