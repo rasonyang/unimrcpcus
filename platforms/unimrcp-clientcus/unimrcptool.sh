@@ -30,7 +30,7 @@ fi
 
 profile=$2.xml
 if [ ! -r ../conf/$profile ];then
-        Err "[Err] profile not exist profile "
+        Err "[Err] profile not exist profile $profile"
         exit
 fi
 

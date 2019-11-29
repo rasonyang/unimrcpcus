@@ -3,7 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 CONFFILES            = logfile.xml logger.xml dirlayout.xml
 
 if UNIMRCP_CLIENT_LIB
-CONFFILES           += unimrcpclient.xml unimrcpclient.xsd
+CONFFILES           += unimrcpclient.xml unimrcpclient.xsd nlsmsc0.xml
 endif
 
 if UNIMRCP_SERVER_LIB
