@@ -34,8 +34,8 @@ static void demo_message_body_set(mrcp_message_t *mrcp_message, const apt_dir_la
 	if(file_path) {
 		FILE *file = fopen(file_path,"r");
 		if(file) {
-			char textcontent[400];
-			char text[1024];
+			char textcontent[400] = {0};
+			char text[1024] = {0};
 			apr_size_t size;
 			fread(text,1,sizeof(text),file);
 			sprintf(textcontent,text,g_text);
@@ -44,6 +44,9 @@ static void demo_message_body_set(mrcp_message_t *mrcp_message, const apt_dir_la
 			fclose(file);
 		}
 	}	
+	// apr_size_t size;
+	// size = sizeof(g_text);
+	// apt_string_assign_n(&mrcp_message->body,g_text,size,mrcp_message->pool);
 
 }
 
