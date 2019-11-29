@@ -1,41 +1,59 @@
 #!/bin/bash
 
+ErrColor='\033[31m'
+InfoColor='\E[1;33m'
+EClose='\E[0m'
+
+Err(){
+        echo -e "$ErrColor ${1} $EClose"
+}
+
 Usage(){
+        echo -e $InfoColor
         cat <<EOF
         $0 --h (display help)
-        $0 [synth] <txtfilepath> <wavfilepath>
+        $0 [synth] <profile> <voice> <txtfilepath> <wavfilepath>
+                ex: $0 synth nlsmsc0 siqi text.txt example.wav
 EOF
+        echo -e $EClose
         exit 1
 }
 
-if [ $# -ne 3 ];then
+if [ $# -ne 5 ];then
         Usage
 fi
 
 if [ $1 != "synth" ];then
-        echo "[err] no such run type $1] "
+        Err "[Err] no such run type $1] "
         exit
 fi
 
-if [ ! -r $2 ];then
-        echo "[err] file $2 not exsits "
+profile=$2.xml
+if [ ! -r ../conf/$profile ];then
+        Err "[Err] profile not exist profile "
         exit
 fi
 
-wavext=${3##*.}
+if [ ! -r $4 ];then
+        Err "[Err] file $4 not exsits "
+        exit
+fi
+
+wavext=${5##*.}
 
 if [ "wav" != ${wavext} ];then
-        echo "[err] $3 ext format illegal $wavext "
+        Err "[Err] $5 ext format illegal $wavext "
         exit
 fi
-echo usage $1 $2 $3
-pcmfile=${3/wav/pcm}
-textcontent=`cat $2`
+
+echo usage $1 $2 $3 $4 $5
+pcmfile=${5/wav/pcm}
+textcontent=`cat $4`
 echo $textcontent
 
 echo "text->pcm"
-./unimrcpclientcus  --run=synth --text="${textcontent}" --pcmfile=${pcmfile}
+./unimrcpclientcus  --run=synth --profile=$profile --voice=$3 --text="${textcontent}" --pcmfile=${pcmfile}
 echo "pcm->wav"
-sox -t raw -c 1 -e signed-integer -b 16 -r 8000  ${pcmfile} ${3}
+sox -t raw -c 1 -e signed-integer -b 16 -r 8000  ${pcmfile} ${5}
 echo "finish"
 exit 1
