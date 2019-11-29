@@ -221,6 +221,8 @@ static apt_bool_t demo_framework_options_load(client_options_t *options, int arg
 		return FALSE;
 	}
 
+	printf("param profile[%s] voice[%s] text[%s] pcm[%s]\n",g_profile,g_voice,g_text,g_pcmfile);
+
 	return TRUE;
 }
 

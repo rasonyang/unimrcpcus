@@ -70,8 +70,9 @@ mrcp_message_t* demo_speak_message_create(mrcp_session_t *session, mrcp_channel_
 		if(synth_header) {
 			/* set synthesizer header fields */
 			synth_header->voice_param.age = 28;
-			apt_string_assign(&synth_header->voice_param.name,g_voice,mrcp_message->pool);
 			mrcp_resource_header_property_add(mrcp_message,SYNTHESIZER_HEADER_VOICE_AGE);
+			apt_string_assign(&synth_header->voice_param.name,g_voice,mrcp_message->pool);
+			mrcp_resource_header_property_add(mrcp_message, SYNTHESIZER_HEADER_VOICE_NAME);
 		}
 		/* set message body */
 		demo_message_body_set(mrcp_message,dir_layout,"speak.xml");
