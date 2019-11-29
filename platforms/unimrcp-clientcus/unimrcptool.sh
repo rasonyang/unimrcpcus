@@ -13,7 +13,7 @@ Usage(){
         cat <<EOF
         $0 --h (display help)
         $0 [synth] <profile> <voice> <txtfilepath> <wavfilepath>
-                ex: $0 synth nlsmsc0 siqi text.txt example.wav
+                ex: $0 synth nlsmsc0 siqi example.txt example.wav
 EOF
         echo -e $EClose
         exit 1
