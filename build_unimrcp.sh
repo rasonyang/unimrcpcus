@@ -2,7 +2,7 @@
 CUR_DIR=`pwd`
 cd `dirname $0`
 
-UniMRCP_HOME=${INSTALL_HOME}/unimrcp
+export UniMRCP_HOME=${INSTALL_HOME}/unimrcp
 APR_HOME=${INSTALL_HOME}/unimrcp-deps/apr
 SOFIA_HOME=${INSTALL_HOME}/unimrcp-deps
 
