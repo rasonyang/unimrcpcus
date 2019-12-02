@@ -65,5 +65,9 @@ Info "text->pcm"
 ./unimrcpclientcus  --run=synth --profile=$profile --voice=$3 --text="${textcontent}" --pcmfile=${pcmfile}
 Info "pcm->wav"
 sox -t raw -c 1 -e signed-integer -b 16 -r 8000  ${pcmfile} ${5}
+if [ ! -r ${5} ];then
+        Err "${5} make failed..."
+        exit -1
+fi
 Info "finish"
 exit 0
