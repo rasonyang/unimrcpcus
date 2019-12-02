@@ -1,4 +1,6 @@
 #!/bin/bash
+workdir=$(cd $(dirname $0); pwd)
+cd $workdir
 #test help
 ./unimrcptool.sh
 #test Err

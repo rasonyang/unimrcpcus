@@ -1,4 +1,6 @@
 #!/bin/bash
+workdir=$(cd $(dirname $0); pwd)
+cd $workdir
 
 ErrColor='\033[31m'
 InfoColor='\E[1;33m'
