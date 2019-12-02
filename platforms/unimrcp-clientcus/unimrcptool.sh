@@ -1,13 +1,21 @@
 #!/bin/bash
+
 workdir=$(cd $(dirname $0); pwd)
-cd $workdir
+cd ${workdir}
 
 ErrColor='\033[31m'
 InfoColor='\E[1;33m'
 EClose='\E[0m'
 
+
 Err(){
-        echo -e "$ErrColor ${1} $EClose"
+        echo -e "$ErrColor $@ $EClose"
+        echo `date '+%Y-%m-%d %H:%M:%S' ` [$$] $@ >> ../log/unimrcptool_err.log
+}
+
+Info(){
+        echo -e "$InfoColor $@ $EClose"
+        echo `date '+%Y-%m-%d %H:%M:%S' ` [$$] $@ >> ../log/unimrcptool_info.log
 }
 
 Usage(){
@@ -48,14 +56,14 @@ if [ "wav" != ${wavext} ];then
         exit -1
 fi
 
-echo usage $1 $2 $3 $4 $5
+Info "$@"
 pcmfile=${5/wav/pcm}
 textcontent=`cat $4`
-echo $textcontent
+Info $textcontent
 
-echo "text->pcm"
+Info "text->pcm"
 ./unimrcpclientcus  --run=synth --profile=$profile --voice=$3 --text="${textcontent}" --pcmfile=${pcmfile}
-echo "pcm->wav"
+Info "pcm->wav"
 sox -t raw -c 1 -e signed-integer -b 16 -r 8000  ${pcmfile} ${5}
-echo "finish"
+Info "finish"
 exit 0
