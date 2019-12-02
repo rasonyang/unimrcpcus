@@ -10,13 +10,18 @@ EClose='\E[0m'
 
 Err(){
         echo -e "$ErrColor $@ $EClose"
-        echo `date '+%Y-%m-%d %H:%M:%S' ` [$$] $@ >> ../log/unimrcptool_err.log
+        dates=`date '+%Y-%m-%d %H:%M:%S' `
+        dated=${dates:0:10}
+        echo $dates [$$] $@ >> ../log/unimrcptool_err_${dated}.log
 }
 
 Info(){
         echo -e "$InfoColor $@ $EClose"
-        echo `date '+%Y-%m-%d %H:%M:%S' ` [$$] $@ >> ../log/unimrcptool_info.log
+        dates=`date '+%Y-%m-%d %H:%M:%S' `
+        dated=${dates:0:10}
+        echo $dates [$$] $@ >> ../log/unimrcptool_info_${dated}.log
 }
+
 
 Usage(){
         echo -e $InfoColor
