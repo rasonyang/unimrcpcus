@@ -30,23 +30,24 @@
 
 static void demo_message_body_set(mrcp_message_t *mrcp_message, const apt_dir_layout_t *dir_layout, const char *file_name)
 {
-	char *file_path = apt_datadir_filepath_get(dir_layout,"speaktmp.xml",mrcp_message->pool);
-	if(file_path) {
-		FILE *file = fopen(file_path,"r");
-		if(file) {
-			char textcontent[400] = {0};
-			char text[1024] = {0};
-			apr_size_t size;
-			fread(text,1,sizeof(text),file);
-			sprintf(textcontent,text,g_text);
-			size = sizeof(textcontent);
-			apt_string_assign_n(&mrcp_message->body,textcontent,size,mrcp_message->pool);
-			fclose(file);
-		}
-	}	
-	// apr_size_t size;
-	// size = sizeof(g_text);
-	// apt_string_assign_n(&mrcp_message->body,g_text,size,mrcp_message->pool);
+	// char *file_path = apt_datadir_filepath_get(dir_layout,"speaktmp.xml",mrcp_message->pool);
+	// if(file_path) {
+	// 	FILE *file = fopen(file_path,"r");
+	// 	if(file) {
+	// 		char textcontent[1024] = {0};
+	// 		char text[1024] = {0};
+	// 		apr_size_t size;
+	// 		fread(text,1,sizeof(text),file);
+	// 		sprintf(textcontent,text,g_text);
+	// 		size = sizeof(textcontent);
+	// 		apt_string_assign_n(&mrcp_message->body,textcontent,size,mrcp_message->pool);
+	// 		fclose(file);
+	// 	}
+	// }	
+	
+	apr_size_t size;
+	size = strlen(g_text);
+	apt_string_assign_n(&mrcp_message->body,g_text,size,mrcp_message->pool);
 
 }
 
